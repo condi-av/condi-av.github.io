@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+	<url>
+		<loc>http://condi-av.github.io/index.html</loc>
+		<lastmod>2020-07-31</lastmod>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+		<image:image>
+			<image:loc>http://condi-av.github.io/images/Screenshot_20200729_124553_com.avito.android.png</image:loc>
+			<image:title><![CDATA[Заправка автокондиционера ]]></image:title>
+		</image:image>
+		<image:image>
+			<image:loc>http://condi-av.github.io/images/Screenshot_20200729_124544_com.avito.android.png</image:loc>
+			<image:title><![CDATA[Температура в салоне авто.]]></image:title>
+		</image:image>
+		<image:image>
+			<image:loc>http://condi-av.github.io/images/1808123844_w640_h640_maslo-errecom-pag.png</image:loc>
+			<image:title><![CDATA[Масло PAG]]></image:title>
+		</image:image>
+	</url>
+	<url>
+		<loc>http://condi-av.github.io/imsitemap.html</loc>
+		<lastmod>2020-07-31</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.5</priority>
+	</url>
+</urlset>
