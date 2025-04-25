@@ -1,2 +1,11 @@
 User-agent: *
-Sitemap: https://condi-av.github.io/sitemap.xml
+Allow: /
+Disallow: /private/
+Disallow: /tmp/
+Sitemap: https://ac-service.ru/sitemap.xml
+
+# Яндекс
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign / 
+Host: https://ac-service.ru
