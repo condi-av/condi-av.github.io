@@ -1,44 +1,50 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Обработка формы
-  document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// Маска для телефона
+const phoneInput = document.getElementById('phone');
+IMask(phoneInput, {
+  mask: '+{7} (000) 000-00-00'
+});
+
+// Обработка формы
+document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const formData = new FormData(form);
+  const messages = document.getElementById('formMessages');
+  
+  try {
+    // Здесь должна быть реальная отправка на сервер
+    // Например через fetch или Formspree
+    await new Promise(resolve => setTimeout(resolve, 1000)); // Имитация задержки
     
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const service = document.getElementById('service').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
-    const messageElement = document.getElementById('formMessage');
-
-    if(name && phone && service && date && time) {
-      // Здесь можно добавить отправку данных на сервер
-      messageElement.textContent = `Спасибо, ${name}! Ваша заявка на "${service}" принята. Мы свяжемся с вами для подтверждения.`;
-      messageElement.style.color = 'green';
-      document.getElementById('appointmentForm').reset();
-      
-      // Сохраняем данные в localStorage
-      const appointment = {
-        name: name,
-        phone: phone,
-        service: service,
-        date: date,
-        time: time,
-        timestamp: new Date().toISOString()
-      };
-      localStorage.setItem('lastAppointment', JSON.stringify(appointment));
-    } else {
-      messageElement.textContent = 'Пожалуйста, заполните все поля.';
-      messageElement.style.color = 'red';
+    messages.className = 'success';
+    messages.innerHTML = `
+      <i class="fas fa-check-circle"></i> 
+      Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.
+    `;
+    
+    form.reset();
+    
+    // Отправка в Google Analytics
+    if (window.gtag) {
+      gtag('event', 'conversion', {'send_to': 'AW-123456789/AbCd-EFGhIjK'});
     }
-  });
+    
+  } catch (error) {
+    messages.className = 'error';
+    messages.innerHTML = `
+      <i class="fas fa-exclamation-circle"></i> 
+      Ошибка отправки. Пожалуйста, попробуйте ещё раз или позвоните нам.
+    `;
+  }
+  
+  // Прокрутка к сообщению
+  messages.scrollIntoView({ behavior: 'smooth' });
+});
 
-  // Плавная прокрутка для якорных ссылок
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+// Подсказка при фокусе на поле телефона
+phoneInput.addEventListener('focus', function() {
+  if (!this.value) {
+    this.value = '+7 (';
+  }
 });
