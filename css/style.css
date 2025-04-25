@@ -7,7 +7,6 @@ body {
   line-height: 1.6;
 }
 
-/* Хедер с изображением */
 /* Стили для шапки с локальным изображением */
 header {
   background-image: url('../header-image.webp');
@@ -210,13 +209,28 @@ h2 {
   box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
 }
 
+/* Обновленные стили для формы */
 .form-row {
   display: flex;
-  gap: 15px;
+  gap: 20px; /* Увеличили отступ с 15px до 20px */
 }
 
 .half-width {
   flex: 1;
+  margin-bottom: 0; /* Убираем нижний отступ для выравнивания */
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 15px; /* Меньший отступ на мобильных */
+  }
+  
+  .half-width {
+    width: 100%;
+    margin-right: 0 !important; /* Отменяем !important для мобильных */
+  }
 }
 
 .submit-btn {
