@@ -8,8 +8,9 @@ body {
 }
 
 /* Хедер с изображением */
+/* Стили для шапки с локальным изображением */
 header {
-  background-image: url('https://images.pexels.com/photos/4145196/pexels-photo-4145196.jpeg');
+  background-image: url('../header-image.webp');
   background-size: cover;
   background-position: center;
   padding: 40px 20px;
@@ -18,6 +19,33 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  position: relative;
+}
+
+/* Наложение для лучшей читаемости текста */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.logo-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  header {
+    min-height: 50vh;
+    background-image: url('../header-image-mobile.webp');
+  }
 }
 
 /* Логотип */
