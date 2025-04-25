@@ -159,68 +159,154 @@ h2 {
   color: #0056b3;
 }
 
-/* Форма */
+/* Стили формы заявки */
 .contact-form {
-  background: #fff;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  max-width: 700px;
-  margin: 50px auto;
-}
-
-.contact-form h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2em;
-  color: #222;
-}
-
-form {
   display: flex;
-  flex-direction: column;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
-label {
-  margin-top: 15px;
+.form-container {
+  flex: 1;
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.form-subtitle {
+  color: #e74c3c;
   font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
 }
 
-input, select {
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
   padding: 12px 15px;
-  margin-top: 8px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1em;
-  transition: border-color 0.3s;
+  font-size: 16px;
+  transition: all 0.3s;
 }
 
-input:focus, select:focus {
-  border-color: #007bff;
-  outline: none;
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
 }
 
-button {
-  margin-top: 25px;
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.half-width {
+  flex: 1;
+}
+
+.submit-btn {
+  width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: #fff;
-  font-size: 1.2em;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background: linear-gradient(135deg, #0069d9, #004494);
-  transform: scale(1.02);
-}
-
-#formMessage {
-  margin-top: 20px;
+  font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #2980b9, #3498db);
+  transform: translateY(-2px);
+}
+
+.form-footer {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.privacy-checkbox {
+  margin-bottom: 10px;
+}
+
+.callback-info {
+  color: #27ae60;
+  font-weight: 500;
+}
+
+/* Блок контактной информации */
+.contact-info {
+  flex: 0 0 300px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.contact-info h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.contact-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-item i {
+  color: #3498db;
+  width: 20px;
   text-align: center;
+}
+
+/* Сообщения формы */
+#formMessages {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+}
+
+#formMessages.success {
+  background: #d4edda;
+  color: #155724;
+  display: block;
+}
+
+#formMessages.error {
+  background: #f8d7da;
+  color: #721c24;
+  display: block;
+}
+
+/* Адаптация */
+@media (max-width: 768px) {
+  .contact-form {
+    flex-direction: column;
+  }
+  
+  .contact-info {
+    flex: 1;
+  }
 }
 
 /* Футер */
