@@ -71,27 +71,16 @@
     <h2><i class="fas fa-calendar-alt"></i> Запись на обслуживание</h2>
     <p class="form-subtitle">Оставьте заявку и получите <strong>10% скидку</strong> на первый визит</p>
     
-<form id="appointmentForm" 
-      action="https://formspree.io/f/mqaqaezj" 
-      method="POST"
-      class="ajax-form">
+    <form id="appointmentForm" 
+          action="https://formspree.io/f/mqaqaezj" 
+          method="POST"
+          class="ajax-form">
       
-  <!-- Основные поля формы -->
-  <div class="form-group">
-    <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
-    <input type="text" id="name" name="name" required>
-  </div>
-
-  <div class="form-group">
-    <label for="phone"><i class="fas fa-phone"></i> Телефон:</label>
-    <input type="tel" id="phone" name="phone" required>
-  </div>
-
-  <!-- Скрытые поля для настройки Formspree -->
-  <input type="hidden" name="_replyto" value="ale69ru@yandex.ru">
-  <input type="hidden" name="_subject" value="Новая заявка с сайта">
-  <input type="hidden" name="_language" value="ru">
-  <input type="text" name="_gotcha" style="display:none">
+      <!-- Основные поля формы -->
+      <div class="form-group">
+        <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
 
       <div class="form-group">
         <label for="phone"><i class="fas fa-phone"></i> Телефон:</label>
@@ -124,6 +113,12 @@
           <input type="time" id="time" name="time" min="09:00" max="18:00" required>
         </div>
       </div>
+
+      <!-- Скрытые поля для настройки Formspree -->
+      <input type="hidden" name="_replyto" value="ale69ru@yandex.ru">
+      <input type="hidden" name="_subject" value="Новая заявка с сайта">
+      <input type="hidden" name="_language" value="ru">
+      <input type="text" name="_gotcha" style="display:none">
 
       <button type="submit" class="submit-btn">
         <i class="fas fa-paper-plane"></i> Записаться сейчас
