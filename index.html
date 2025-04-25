@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заправка автокондиционеров | AC Service</title>
+  <meta name="description" content="Профессиональная заправка и обслуживание автокондиционеров">
+  <!-- Подключение Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Иконки Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Подключение внешней таблицы стилей -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="24" width="48" height="20" rx="4" fill="#fff" opacity="0.8"/>
+      <circle cx="16" cy="44" r="4" fill="#fff"/>
+      <circle cx="48" cy="44" r="4" fill="#fff"/>
+    </svg>
+    <div class="logo-text">AC Service</div>
+  </div>
+</header>
+
+<nav>
+  <a href="#services"><i class="fas fa-tools"></i> Услуги</a>
+  <a href="#about"><i class="fas fa-info-circle"></i> О нас</a>
+  <a href="#contact"><i class="fas fa-calendar-check"></i> Записаться</a>
+</nav>
+
+<section id="about">
+  <h2>О нашей компании</h2>
+  <p>Мы предоставляем услуги по заправке и обслуживанию автокондиционеров с использованием современного оборудования и оригинальных материалов. Быстро, качественно и по доступным ценам! Наши специалисты обеспечат комфорт и безопасность вашего автомобиля.</p>
+</section>
+
+<section id="services" class="services">
+  <h2>Наши услуги</h2>
+  <div class="service-item">
+    <h3><i class="fas fa-snowflake"></i> Заправка автокондиционера</h3>
+    <p>Профессиональная заправка системы кондиционирования автомобиля, устранение утечек и проверка работы системы.</p>
+  </div>
+  <div class="service-item">
+    <h3><i class="fas fa-search"></i> Диагностика системы</h3>
+    <p>Комплексная диагностика для выявления проблем и определения необходимых работ.</p>
+  </div>
+  <div class="service-item">
+    <h3><i class="fas fa-cogs"></i> Обслуживание и ремонт</h3>
+    <p>Обслуживание системы кондиционирования, замена фильтров, компрессоров и других компонентов.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact-form">
+  <h2>Записаться на услугу</h2>
+  <form id="appointmentForm">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+
+    <label for="phone">Телефон:</label>
+    <input type="tel" id="phone" name="phone" placeholder="Ваш номер" required>
+
+    <label for="service">Услуга:</label>
+    <select id="service" name="service" required>
+      <option value="">Выберите услугу</option>
+      <option value="Заправка автокондиционера">Заправка автокондиционера</option>
+      <option value="Диагностика системы">Диагностика системы</option>
+      <option value="Обслуживание и ремонт">Обслуживание и ремонт</option>
+    </select>
+
+    <label for="date">Дата:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Время:</label>
+    <input type="time" id="time" name="time" required>
+
+    <button type="submit">Записаться</button>
+  </form>
+  <div id="formMessage"></div>
+</section>
+
+<footer>
+  <p>&copy; 2024 AC Service. Все права защищены.</p>
+  <div class="social-links">
+    <a href="https://vk.com/" target="_blank"><i class="fab fa-vk"></i></a>
+    <a href="https://telegram.org/" target="_blank"><i class="fab fa-telegram"></i></a>
+    <a href="https://wa.me/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
