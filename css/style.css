@@ -9,7 +9,7 @@ body {
 
 /* Шапка */
 header {
-  background-image: url('../header-image.webp');
+  background-image: url('../images/header-image.webp');
   background-size: cover;
   background-position: center;
   padding: 40px 20px;
@@ -65,7 +65,7 @@ nav {
   padding: 10px 20px;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
 }
 
 nav a {
@@ -75,7 +75,7 @@ nav a {
   font-weight: 600;
   display: flex;
   align-items: center;
-  transition: background 0.3s, transform 0.3s;
+  transition: all 0.3s ease;
   border-radius: 6px;
 }
 
@@ -93,7 +93,7 @@ nav a:hover {
 section {
   padding: 50px 20px;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 h2 {
@@ -105,9 +105,10 @@ h2 {
 
 #about p {
   max-width: 900px;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 40px;
   font-size: 1.2em;
   text-align: center;
+  line-height: 1.8;
 }
 
 /* Услуги */
@@ -124,7 +125,7 @@ h2 {
   padding: 30px;
   flex: 1 1 300px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 
 .service-item:hover {
@@ -181,19 +182,22 @@ h2 {
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 12px 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
   border-color: #3498db;
   box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+  outline: none;
 }
 
 .form-row {
@@ -215,12 +219,16 @@ h2 {
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
   background: linear-gradient(135deg, #2980b9, #3498db);
   transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
 }
 
 .form-footer {
@@ -230,11 +238,20 @@ h2 {
 
 .privacy-checkbox {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.privacy-checkbox input {
+  margin-right: 8px;
 }
 
 .callback-info {
   color: #27ae60;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Контактная информация */
@@ -249,6 +266,7 @@ h2 {
 .contact-info h3 {
   margin-top: 0;
   color: #2c3e50;
+  margin-bottom: 20px;
 }
 
 .contact-item {
@@ -262,6 +280,16 @@ h2 {
   color: #3498db;
   width: 20px;
   text-align: center;
+}
+
+.contact-item a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #007bff;
 }
 
 /* Сообщения формы */
@@ -293,6 +321,24 @@ footer {
   margin-top: 60px;
 }
 
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
 .social-links {
   margin-top: 20px;
 }
@@ -301,18 +347,80 @@ footer {
   color: #fff;
   font-size: 1.5em;
   margin: 0 10px;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .social-links a:hover {
   color: #007bff;
+  transform: translateY(-3px);
 }
 
 /* Адаптация */
 @media (max-width: 768px) {
   header {
     min-height: 50vh;
-    background-image: url('../header-image-mobile.webp');
+    background-image: url('../images/header-image-mobile.webp');
+    padding: 30px 15px;
+  }
+  
+  .logo-text {
+    font-size: 1.8em;
+  }
+  
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 8px 10px;
+  }
+  
+  nav a {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+  
+  section {
+    padding: 30px 15px;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .service-item {
+    padding: 20px;
+  }
+  
+  .contact-form {
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+  }
+  
+  .form-container,
+  .contact-info {
+    padding: 20px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    min-height: 40vh;
+  }
+  
+  .logo-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo-svg {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
   
   nav {
@@ -320,30 +428,13 @@ footer {
   }
   
   nav a {
-    padding: 10px 0;
     width: 100%;
     justify-content: center;
+    margin: 2px 0;
   }
   
-  .service-item {
-    flex: 1 1 100%;
-  }
-  
-  .contact-form {
+  .footer-links {
     flex-direction: column;
-    padding: 20px;
-  }
-  
-  .contact-info {
-    flex: 1;
-  }
-  
-  .form-row {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .half-width {
-    width: 100%;
+    gap: 10px;
   }
 }
