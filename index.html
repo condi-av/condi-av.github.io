@@ -76,7 +76,6 @@
           method="POST"
           class="ajax-form">
       
-      <!-- Основные поля формы -->
       <div class="form-group">
         <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
         <input type="text" id="name" name="name" required>
@@ -114,7 +113,6 @@
         </div>
       </div>
 
-      <!-- Скрытые поля для настройки Formspree -->
       <input type="hidden" name="_replyto" value="ale69ru@yandex.ru">
       <input type="hidden" name="_subject" value="Новая заявка с сайта">
       <input type="hidden" name="_language" value="ru">
@@ -152,6 +150,14 @@
       <i class="fas fa-map-marker-alt"></i>
       <span>г. Москва, ул. Люберка, 1/1А</span>
     </div>
+    
+    <!-- Добавленный блок с картой и кнопкой -->
+    <div class="map-container" id="yandexMap" style="height: 300px; margin-top: 20px;"></div>
+    <div class="route-button-container" style="margin-top: 15px;">
+      <a href="#" id="routeButton" class="route-button" style="display: inline-block; background: #FFD700; color: #000; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+        <i class="fas fa-route"></i> Проложить маршрут
+      </a>
+    </div>
   </div>
 </section>
 
@@ -168,6 +174,53 @@
   </div>
 </footer>
 
+<!-- Подключение IMask для телефона -->
+<script src="https://unpkg.com/imask"></script>
+<!-- Подключение Яндекс.Карт -->
+<script src="https://api-maps.yandex.ru/2.1/?apikey=6a008034-faa2-4fb0-8d62-671062ab8aaf&lang=ru_RU"></script>
+<!-- Основной JavaScript -->
 <script src="js/script.js"></script>
+
+<script>
+// Инициализация карты
+function initMap() {
+  if (typeof ymaps !== 'undefined') {
+    const map = new ymaps.Map('yandexMap', {
+      center: [55.692252, 37.924886], // Замените на свои координаты
+      zoom: 15
+    });
+
+    // Создание метки
+    const placemark = new ymaps.Placemark([55.692252, 37.924886], {
+      hintContent: 'AC Service',
+      balloonContent: 'г. Москва, ул. Люберка, 1/1А'
+    }, {
+      iconLayout: 'default#image',
+      iconImageHref: 'https://cdn-icons-png.flaticon.com/512/484/484167.png',
+      iconImageSize: [40, 40],
+      iconImageOffset: [-20, -40]
+    });
+
+    map.geoObjects.add(placemark);
+    map.controls.remove('searchControl');
+    map.controls.remove('trafficControl');
+    
+    // Кнопка "Проложить маршрут"
+    document.getElementById('routeButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = `https://yandex.ru/maps/?rtext=~${encodeURIComponent('55.692252, 37.924886')}`;
+      window.open(url, '_blank');
+    });
+  }
+}
+
+// Запуск инициализации карты после загрузки API
+if (window.ymaps) {
+  ymaps.ready(initMap);
+} else {
+  document.addEventListener('yandexmap-loaded', initMap);
+}
+</script>
+
 </body>
 </html>
