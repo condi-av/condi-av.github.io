@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://condi-av.github.io/sitemap.xml
