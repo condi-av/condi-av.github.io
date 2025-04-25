@@ -13,9 +13,8 @@ document.getElementById('appointmentForm').addEventListener('submit', async func
   const messages = document.getElementById('formMessages');
   
   try {
-    // Здесь должна быть реальная отправка на сервер
-    // Например через fetch или Formspree
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Имитация задержки
+    // Имитация отправки
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
     messages.className = 'success';
     messages.innerHTML = `
@@ -25,7 +24,6 @@ document.getElementById('appointmentForm').addEventListener('submit', async func
     
     form.reset();
     
-    // Отправка в Google Analytics
     if (window.gtag) {
       gtag('event', 'conversion', {'send_to': 'AW-123456789/AbCd-EFGhIjK'});
     }
@@ -38,11 +36,10 @@ document.getElementById('appointmentForm').addEventListener('submit', async func
     `;
   }
   
-  // Прокрутка к сообщению
   messages.scrollIntoView({ behavior: 'smooth' });
 });
 
-// Подсказка при фокусе на поле телефона
+// Подсказка для телефона
 phoneInput.addEventListener('focus', function() {
   if (!this.value) {
     this.value = '+7 (';
