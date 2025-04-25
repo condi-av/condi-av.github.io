@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Заправка автокондиционеров | AC Service в Москве</title>
-  <meta name="description" content="Профессиональная заправка и обслуживание автокондиционеров в Москве. Работаем с 2010 года. Гарантия качества.">
+  <meta name="description" content="Профессиональная заправка и обслуживание автокондиционеров в Москве. Работаем с 2015 года. Гарантия качества.">
   
   <!-- Карта сайта -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
@@ -19,7 +19,7 @@
   <!-- Гео-метатеги -->
   <meta name="geo.region" content="RU-MOW">
   <meta name="geo.placename" content="Москва">
-  <meta name="geo.position" content="55.692252, 37.924886">
+  <meta name="geo.position" content="55.692252,37.924886">
   <meta name="ICBM" content="55.692252, 37.924886">
 
   <!-- Favicon -->
@@ -64,7 +64,7 @@
         "Saturday"
       ],
       "opens": "09:00",
-      "closes": "18:00"
+      "closes": "21:00"
     },
     "priceRange": "$$"
   }
@@ -80,11 +80,112 @@
 </head>
 <body>
 
-<!-- Остальная часть HTML (header, nav, sections) остается без изменений, как в предыдущих примерах -->
+<header>
+  <div class="logo-container">
+    <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="24" width="48" height="20" rx="4" fill="#fff" opacity="0.8"/>
+      <circle cx="16" cy="44" r="4" fill="#fff"/>
+      <circle cx="48" cy="44" r="4" fill="#fff"/>
+    </svg>
+    <div class="logo-text">AC Service</div>
+  </div>
+</header>
+
+<nav>
+  <a href="#services"><i class="fas fa-tools"></i> Услуги</a>
+  <a href="#about"><i class="fas fa-info-circle"></i> О нас</a>
+  <a href="#contact"><i class="fas fa-calendar-check"></i> Записаться</a>
+</nav>
+
+<section id="about">
+  <h2>О нашей компании</h2>
+  <p>Мы предоставляем услуги по заправке и обслуживанию автокондиционеров с использованием современного оборудования и оригинальных материалов. Быстро, качественно и по доступным ценам! Наши специалисты обеспечат комфорт и безопасность вашего автомобиля.</p>
+</section>
+
+<section id="services" class="services">
+  <h2>Наши услуги</h2>
+  <div class="service-item">
+    <h3><i class="fas fa-snowflake"></i> Заправка автокондиционера</h3>
+    <p>Профессиональная заправка системы кондиционирования автомобиля, устранение утечек и проверка работы системы.</p>
+  </div>
+  <div class="service-item">
+    <h3><i class="fas fa-search"></i> Диагностика системы</h3>
+    <p>Комплексная диагностика для выявления проблем и определения необходимых работ.</p>
+  </div>
+  <div class="service-item">
+    <h3><i class="fas fa-cogs"></i> Обслуживание и ремонт</h3>
+    <p>Обслуживание системы кондиционирования, замена фильтров, компрессоров и других компонентов.</p>
+  </div>
+</section>
 
 <section id="contact" class="contact-form">
   <div class="form-container">
-    <!-- Форма остается без изменений -->
+    <h2><i class="fas fa-calendar-alt"></i> Запись на обслуживание</h2>
+    <p class="form-subtitle">Оставьте заявку и получите <strong>10% скидку</strong> на первый визит</p>
+    
+    <form id="appointmentForm" 
+          action="https://formspree.io/f/mqaqaezj" 
+          method="POST"
+          class="ajax-form">
+      
+      <div class="form-group">
+        <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone"><i class="fas fa-phone"></i> Телефон:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </div>
+
+      <div class="form-group">
+        <label for="car"><i class="fas fa-car"></i> Марка авто:</label>
+        <input type="text" id="car" name="car" placeholder="Например: Toyota Camry">
+      </div>
+
+      <div class="form-group">
+        <label for="service"><i class="fas fa-tools"></i> Услуга:</label>
+        <select id="service" name="service" required>
+          <option value="">-- Выберите услугу --</option>
+          <option value="Диагностика">Диагностика кондиционера (бесплатно)</option>
+          <option value="Заправка">Заправка кондиционера</option>
+          <option value="Ремонт">Ремонт системы</option>
+          <option value="Комплекс">Комплексное обслуживание</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half-width">
+          <label for="date"><i class="fas fa-calendar-day"></i> Дата:</label>
+          <input type="date" id="date" name="date" min="2024-01-01" required>
+        </div>
+        <div class="form-group half-width">
+          <label for="time"><i class="fas fa-clock"></i> Время:</label>
+          <input type="time" id="time" name="time" min="09:00" max="21:00" required>
+        </div>
+      </div>
+
+      <input type="hidden" name="_replyto" value="ale69ru@yandex.ru">
+      <input type="hidden" name="_subject" value="Новая заявка с сайта">
+      <input type="hidden" name="_language" value="ru">
+      <input type="text" name="_gotcha" style="display:none">
+
+      <button type="submit" class="submit-btn">
+        <i class="fas fa-paper-plane"></i> Записаться сейчас
+      </button>
+
+      <div class="form-footer">
+        <div class="privacy-checkbox">
+          <input type="checkbox" id="privacy" name="privacy" required checked>
+          <label for="privacy">Согласен с <a href="/privacy">политикой конфиденциальности</a></label>
+        </div>
+        <div class="callback-info">
+          <i class="fas fa-info-circle"></i> Мы перезвоним в течение 15 минут
+        </div>
+      </div>
+    </form>
+
+    <div id="formMessages"></div>
   </div>
   
   <div class="contact-info">
@@ -95,7 +196,7 @@
     </div>
     <div class="contact-item">
       <i class="fab fa-whatsapp"></i>
-      <a href="https://wa.me/79854549486" target="_blank">WhatsApp</a>
+      <a href="https://wa.me/79854549486" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <div class="contact-item">
       <i class="fas fa-map-marker-alt"></i>
@@ -108,7 +209,7 @@
          
     <!-- Кнопка маршрута со схематической разметкой -->
     <div class="route-button-container" style="margin-top: 15px;">
-      <a href="https://yandex.ru/maps/?rtext=~55.692252, 37.924886" 
+      <a href="https://yandex.ru/maps/?rtext=~55.692252,37.924886" 
          id="routeButton" 
          class="route-button" 
          target="_blank"
@@ -124,7 +225,7 @@
 <footer>
   <p>&copy; 2010-2024 AC Service. Все права защищены.</p>
   <div class="footer-links">
-    <a href="sitemap.xml" target="_blank">Карта сайта</a>
+    <a href="sitemap.xml" target="_blank" rel="noopener">Карта сайта</a>
     <a href="/privacy">Политика конфиденциальности</a>
     <a href="/map">Как добраться</a>
   </div>
@@ -156,7 +257,7 @@ function initMap() {
         <div style="padding: 10px;">
           <h3 style="margin: 0 0 10px;">AC Service</h3>
           <p>г. Москва, ул. Люберка, 1/1А</p>
-          <p>Часы работы: 9:00-18:00 (Пн-Сб)</p>
+          <p>Часы работы: 9:00-21:00 (Пн-Сб)</p>
           <p><a href="tel:+79854549486">+7 (985) 454-94-86</a></p>
         </div>
       `
