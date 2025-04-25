@@ -58,21 +58,82 @@
 </section>
 
 <section id="contact" class="contact-form">
-  <h2>Записаться на услугу</h2>
-  <form id="appointmentForm">
-    <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+  <div class="form-container">
+    <h2><i class="fas fa-calendar-alt"></i> Запись на обслуживание</h2>
+    <p class="form-subtitle">Оставьте заявку и получите <strong>10% скидку</strong> на первый визит</p>
+    
+    <form id="appointmentForm" class="ajax-form">
+      <div class="form-group">
+        <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
+        <input type="text" id="name" name="name" placeholder="Например: Иван Иванов" required>
+      </div>
 
-    <label for="phone">Телефон:</label>
-    <input type="tel" id="phone" name="phone" placeholder="Ваш номер" required>
+      <div class="form-group">
+        <label for="phone"><i class="fas fa-phone"></i> Телефон:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+      </div>
 
-    <label for="service">Услуга:</label>
-    <select id="service" name="service" required>
-      <option value="">Выберите услугу</option>
-      <option value="Заправка автокондиционера">Заправка автокондиционера</option>
-      <option value="Диагностика системы">Диагностика системы</option>
-      <option value="Обслуживание и ремонт">Обслуживание и ремонт</option>
-    </select>
+      <div class="form-group">
+        <label for="car"><i class="fas fa-car"></i> Марка авто:</label>
+        <input type="text" id="car" name="car" placeholder="Например: Toyota Camry">
+      </div>
+
+      <div class="form-group">
+        <label for="service"><i class="fas fa-tools"></i> Услуга:</label>
+        <select id="service" name="service" required>
+          <option value="">-- Выберите услугу --</option>
+          <option value="Диагностика">Диагностика кондиционера (бесплатно)</option>
+          <option value="Заправка">Заправка кондиционера</option>
+          <option value="Ремонт">Ремонт системы</option>
+          <option value="Комплекс">Комплексное обслуживание</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half-width">
+          <label for="date"><i class="fas fa-calendar-day"></i> Дата:</label>
+          <input type="date" id="date" name="date" min="2024-01-01" required>
+        </div>
+        <div class="form-group half-width">
+          <label for="time"><i class="fas fa-clock"></i> Время:</label>
+          <input type="time" id="time" name="time" min="09:00" max="18:00" required>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <i class="fas fa-paper-plane"></i> Записаться сейчас
+      </button>
+
+      <div class="form-footer">
+        <div class="privacy-checkbox">
+          <input type="checkbox" id="privacy" name="privacy" required checked>
+          <label for="privacy">Согласен с <a href="/privacy">политикой конфиденциальности</a></label>
+        </div>
+        <div class="callback-info">
+          <i class="fas fa-info-circle"></i> Мы перезвоним в течение 15 минут
+        </div>
+      </div>
+    </form>
+
+    <div id="formMessages"></div>
+  </div>
+  
+  <div class="contact-info">
+    <h3><i class="fas fa-headset"></i> Альтернативные способы связи</h3>
+    <div class="contact-item">
+      <i class="fas fa-phone-alt"></i>
+      <a href="tel:+78001234567">8 (800) 123-45-67</a>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-whatsapp"></i>
+      <a href="https://wa.me/79001234567" target="_blank">WhatsApp</a>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>г. Москва, ул. Автозаводская, 23</span>
+    </div>
+  </div>
+</section>
 
     <label for="date">Дата:</label>
     <input type="date" id="date" name="date" required>
