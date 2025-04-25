@@ -11,28 +11,32 @@ document.getElementById('appointmentForm').addEventListener('submit', async func
   const form = e.target;
   const formData = new FormData(form);
   const messages = document.getElementById('formMessages');
-  
+
   try {
-    // Имитация отправки
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    messages.className = 'success';
-    messages.innerHTML = `
-      <i class="fas fa-check-circle"></i> 
-      Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.
-    `;
-    
-    form.reset();
-    
-    if (window.gtag) {
-      gtag('event', 'conversion', {'send_to': 'AW-123456789/AbCd-EFGhIjK'});
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      messages.className = 'success';
+      messages.innerHTML = `
+        <i class="fas fa-check-circle"></i> 
+        Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.
+      `;
+      form.reset();
+    } else {
+      throw new Error('Ошибка отправки');
     }
     
   } catch (error) {
     messages.className = 'error';
     messages.innerHTML = `
       <i class="fas fa-exclamation-circle"></i> 
-      Ошибка отправки. Пожалуйста, попробуйте ещё раз или позвоните нам.
+      Ошибка отправки. Пожалуйста, позвоните нам напрямую.
     `;
   }
   
@@ -45,3 +49,20 @@ phoneInput.addEventListener('focus', function() {
     this.value = '+7 (';
   }
 });
+
+/* Футер и карта сайта */
+.footer-links {
+  margin: 15px 0;
+}
+
+.footer-links a {
+  color: #ccc;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
