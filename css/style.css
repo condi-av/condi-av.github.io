@@ -509,3 +509,30 @@ footer {
     gap: 10px;
   }
 }
+/* Страница политики */
+.privacy-page .content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Страница с картой */
+.map-page .content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.transport ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.transport li::before {
+  content: "•";
+  color: #007bff;
+  margin-right: 8px;
+}
