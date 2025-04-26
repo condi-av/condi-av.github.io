@@ -130,7 +130,7 @@
       
       <div class="form-group">
         <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required minlength="2" maxlength="50">
       </div>
 
       <div class="form-group">
@@ -140,7 +140,7 @@
 
       <div class="form-group">
         <label for="car"><i class="fas fa-car"></i> Марка авто:</label>
-        <input type="text" id="car" name="car" placeholder="Например: Toyota Camry">
+        <input type="text" id="car" name="car" placeholder="Например: Toyota Camry" minlength="2" maxlength="50">
       </div>
 
       <div class="form-group">
@@ -157,12 +157,32 @@
       <div class="form-row">
         <div class="form-group half-width">
           <label for="date"><i class="fas fa-calendar-day"></i> Дата:</label>
-          <input type="date" id="date" name="date" min="2024-01-01" required>
+          <input type="date" id="date" name="date" required>
         </div>
         <div class="form-group half-width">
           <label for="time"><i class="fas fa-clock"></i> Время:</label>
-          <input type="time" id="time" name="time" min="09:00" max="21:00" required>
+          <select id="time" name="time" required>
+            <option value="">Выберите время</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00">18:00</option>
+            <option value="19:00">19:00</option>
+            <option value="20:00">20:00</option>
+            <option value="21:00">21:00</option>
+          </select>
         </div>
+      </div>
+
+      <div class="form-group">
+        <label for="notes"><i class="fas fa-comment"></i> Дополнительная информация:</label>
+        <textarea id="notes" name="notes" rows="2" maxlength="500"></textarea>
       </div>
 
       <input type="hidden" name="_replyto" value="ale69ru@yandex.ru">
@@ -177,7 +197,7 @@
       <div class="form-footer">
         <div class="privacy-checkbox">
           <input type="checkbox" id="privacy" name="privacy" required checked>
-          <label for="privacy">Согласен с <a href="/privacy">политикой конфиденциальности</a></label>
+          <label for="privacy">Согласен с <a href="/privacy" target="_blank">политикой конфиденциальности</a></label>
         </div>
         <div class="callback-info">
           <i class="fas fa-info-circle"></i> Мы перезвоним в течение 15 минут
@@ -185,7 +205,7 @@
       </div>
     </form>
 
-    <div id="formMessages"></div>
+    <div id="formMessages" style="display:none; margin-top:20px;"></div>
   </div>
   
   <div class="contact-info">
@@ -276,6 +296,7 @@ function initMap() {
 
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', function() {
+  // Инициализация карты
   if (window.ymaps) {
     ymaps.ready(initMap);
   } else {
@@ -286,6 +307,80 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     document.head.appendChild(script);
   }
+
+  // Инициализация маски для телефона
+  const phoneInput = document.getElementById('phone');
+  const phoneMask = new IMask(phoneInput, {
+    mask: '+{7} (000) 000-00-00',
+    lazy: false,
+    placeholderChar: '_'
+  });
+
+  // Установка минимальной даты (сегодня)
+  const dateInput = document.getElementById('date');
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  dateInput.min = tomorrow.toISOString().split('T')[0]; // Запрещаем запись на сегодня
+
+  // Обработка отправки формы
+  const form = document.getElementById('appointmentForm');
+  const formMessages = document.getElementById('formMessages');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Показываем индикатор загрузки
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+    
+    // Собираем данные формы
+    const formData = new FormData(form);
+    
+    // Отправка через Fetch API
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Ошибка сети');
+      }
+    })
+    .then(data => {
+      formMessages.style.display = 'block';
+      formMessages.innerHTML = `
+        <div class="alert alert-success" style="padding:15px; background:#d4edda; color:#155724; border-radius:4px;">
+          <i class="fas fa-check-circle"></i> 
+          Ваша заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.
+        </div>
+      `;
+      form.reset();
+      phoneMask.updateValue(); // Сброс маски телефона
+    })
+    .catch(error => {
+      formMessages.style.display = 'block';
+      formMessages.innerHTML = `
+        <div class="alert alert-error" style="padding:15px; background:#f8d7da; color:#721c24; border-radius:4px;">
+          <i class="fas fa-exclamation-circle"></i> 
+          Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.
+        </div>
+      `;
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Записаться сейчас';
+      
+      // Прокрутка к сообщению
+      formMessages.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
 });
 </script>
 </body>
