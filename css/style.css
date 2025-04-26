@@ -536,3 +536,110 @@ footer {
   color: #007bff;
   margin-right: 8px;
 }
+/* Секция отзывов */
+.reviews {
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.reviews-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.review-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  font-size: 2.5em;
+  color: #007bff;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.review-rating {
+  text-align: right;
+}
+
+.stars {
+  color: #ffd700;
+  font-size: 1.1em;
+}
+
+.stars .fa-star-half-alt {
+  color: #ffd700;
+}
+
+.rating-value {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 3px;
+}
+
+.review-text {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.review-date {
+  font-size: 0.85em;
+  color: #888;
+  text-align: right;
+}
+
+.reviews-footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.show-all-reviews {
+  background: none;
+  border: 2px solid #007bff;
+  color: #007bff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.show-all-reviews:hover {
+  background: #007bff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .review-card {
+    padding: 20px;
+  }
+}
