@@ -109,3 +109,31 @@ document.querySelectorAll('nav a').forEach(link => {
     }
   });
 });
+
+// В конец существующего скрипта добавить:
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.querySelector('.burger-menu');
+  const nav = document.querySelector('.nav-links');
+
+  // Открытие/закрытие меню
+  burger.addEventListener('click', function() {
+    this.classList.toggle('active');
+    nav.classList.toggle('active');
+  });
+
+  // Закрытие меню при клике на ссылку
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      nav.classList.remove('active');
+    });
+  });
+
+  // Закрытие меню при клике вне области
+  document.addEventListener('click', function(e) {
+    if (!nav.contains(e.target) && !burger.contains(e.target)) {
+      burger.classList.remove('active');
+      nav.classList.remove('active');
+    }
+  });
+});
