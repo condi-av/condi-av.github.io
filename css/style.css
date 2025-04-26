@@ -89,6 +89,77 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
+/* Бургер меню */
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.burger-bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+
+/* Адаптация для мобилок */
+@media (max-width: 768px) {
+  .burger-menu {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    padding: 80px 20px 20px;
+    text-align: center;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-links a {
+    padding: 20px;
+    font-size: 1.2em;
+    border-radius: 0;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .burger-menu.active .burger-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .burger-menu.active .burger-bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .burger-menu.active .burger-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+}
+
 /* Основные секции */
 section {
   padding: 50px 20px;
