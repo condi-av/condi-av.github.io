@@ -146,3 +146,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+// В конец script.js
+document.querySelector('.show-all-reviews').addEventListener('click', function() {
+  this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Загрузка...';
+  
+  // Здесь может быть запрос к API для подгрузки отзывов
+  setTimeout(() => {
+    this.style.display = 'none';
+    document.querySelectorAll('.review-card.hidden').forEach(card => {
+      card.style.display = 'block';
+    });
+  }, 1000);
+});
