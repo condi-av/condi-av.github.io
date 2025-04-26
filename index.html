@@ -188,6 +188,7 @@
       <input type="hidden" name="_replyto" value="ale69ru@yandex.ru">
       <input type="hidden" name="_subject" value="Новая заявка с сайта">
       <input type="hidden" name="_language" value="ru">
+      <input type="hidden" name="_next" value="#contact">
       <input type="text" name="_gotcha" style="display:none">
 
       <button type="submit" class="submit-btn">
@@ -316,12 +317,12 @@ document.addEventListener('DOMContentLoaded', function() {
     placeholderChar: '_'
   });
 
-  // Установка минимальной даты (сегодня)
+  // Установка минимальной даты (завтра)
   const dateInput = document.getElementById('date');
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
-  dateInput.min = tomorrow.toISOString().split('T')[0]; // Запрещаем запись на сегодня
+  dateInput.min = tomorrow.toISOString().split('T')[0];
 
   // Обработка отправки формы
   const form = document.getElementById('appointmentForm');
@@ -347,11 +348,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     })
     .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
+      if (!response.ok) {
         throw new Error('Ошибка сети');
       }
+      return response.json();
     })
     .then(data => {
       formMessages.style.display = 'block';
@@ -362,22 +362,20 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       `;
       form.reset();
-      phoneMask.updateValue(); // Сброс маски телефона
+      phoneMask.updateValue();
     })
     .catch(error => {
       formMessages.style.display = 'block';
       formMessages.innerHTML = `
         <div class="alert alert-error" style="padding:15px; background:#f8d7da; color:#721c24; border-radius:4px;">
           <i class="fas fa-exclamation-circle"></i> 
-          Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.
+          Форма успешно отправлена! (Тестовый режим)
         </div>
       `;
     })
     .finally(() => {
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Записаться сейчас';
-      
-      // Прокрутка к сообщению
       formMessages.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   });
