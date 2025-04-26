@@ -9,7 +9,7 @@ body {
 
 /* Шапка */
 header {
-  background-image: url('../images/header-image.webp');
+  background-image: url('../header-image.webp');
   background-size: cover;
   background-position: center;
   padding: 40px 20px;
@@ -33,12 +33,11 @@ header::before {
   background: rgba(0, 0, 0, 0.4);
 }
 
+/* Логотип */
 .logo-container {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+  transition: transform 0.4s ease;
 }
 
 .logo-svg {
@@ -54,6 +53,7 @@ header::before {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 10px 20px;
   border-radius: 10px;
+  transition: 0.3s ease;
 }
 
 /* Навигация */
@@ -65,7 +65,7 @@ nav {
   padding: 10px 20px;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 999;
 }
 
 nav a {
@@ -75,8 +75,13 @@ nav a {
   font-weight: 600;
   display: flex;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: 6px;
+}
+
+nav a.active {
+  background: #007bff !important;
+  transform: translateY(-2px) scale(1.05);
 }
 
 nav a i {
@@ -93,7 +98,7 @@ nav a:hover {
 section {
   padding: 50px 20px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 h2 {
@@ -101,14 +106,6 @@ h2 {
   font-size: 2em;
   margin-bottom: 30px;
   color: #222;
-}
-
-#about p {
-  max-width: 900px;
-  margin: 0 auto 40px;
-  font-size: 1.2em;
-  text-align: center;
-  line-height: 1.8;
 }
 
 /* Услуги */
@@ -125,25 +122,12 @@ h2 {
   padding: 30px;
   flex: 1 1 300px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .service-item:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-}
-
-.service-item h3 {
-  margin-top: 0;
-  color: #007bff;
-  font-size: 1.5em;
-  display: flex;
-  align-items: center;
-}
-
-.service-item h3 i {
-  margin-right: 10px;
-  color: #0056b3;
 }
 
 /* Форма */
@@ -163,278 +147,93 @@ h2 {
   box-shadow: 0 5px 25px rgba(0,0,0,0.1);
 }
 
-.form-subtitle {
-  color: #e74c3c;
-  font-weight: 600;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #333;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
-  outline: none;
-}
-
-.form-row {
-  display: flex;
-  gap: 20px;
-}
-
-.half-width {
-  flex: 1;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-  background: linear-gradient(135deg, #2980b9, #3498db);
-  transform: translateY(-2px);
-}
-
-.submit-btn:active {
-  transform: translateY(0);
-}
-
-.form-footer {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.privacy-checkbox {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.privacy-checkbox input {
-  margin-right: 8px;
-}
-
-.callback-info {
-  color: #27ae60;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Контактная информация */
-.contact-info {
-  flex: 0 0 300px;
-  background: #f8f9fa;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.contact-info h3 {
-  margin-top: 0;
-  color: #2c3e50;
-  margin-bottom: 20px;
-}
-
-.contact-item {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.contact-item i {
-  color: #3498db;
-  width: 20px;
-  text-align: center;
-}
-
-.contact-item a {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-item a:hover {
-  color: #007bff;
-}
-
-/* Сообщения формы */
-#formMessages {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 5px;
-  display: none;
-}
-
-#formMessages.success {
-  background: #d4edda;
-  color: #155724;
-  display: block;
-}
-
-#formMessages.error {
-  background: #f8d7da;
-  color: #721c24;
-  display: block;
-}
-
-/* Футер */
-footer {
-  background-color: #222;
-  color: #ccc;
-  text-align: center;
-  padding: 30px 20px;
-  margin-top: 60px;
-}
-
-.footer-links {
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #fff;
-}
-
-.social-links {
-  margin-top: 20px;
-}
-
-.social-links a {
-  color: #fff;
-  font-size: 1.5em;
-  margin: 0 10px;
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #007bff;
-  transform: translateY(-3px);
-}
-
 /* Адаптация */
 @media (max-width: 768px) {
   header {
     min-height: 50vh;
-    background-image: url('../images/header-image-mobile.webp');
-    padding: 30px 15px;
+    background-image: url('../header-image-mobile.webp');
   }
-  
-  .logo-text {
-    font-size: 1.8em;
-  }
-  
+
   nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 8px 10px;
-  }
-  
-  nav a {
-    padding: 8px 10px;
-    font-size: 0.9em;
-  }
-  
-  section {
-    padding: 30px 15px;
-  }
-  
-  h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-  }
-  
-  .service-item {
-    padding: 20px;
-  }
-  
-  .contact-form {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
     flex-direction: column;
-    padding: 15px;
-    gap: 20px;
-  }
-  
-  .form-container,
-  .contact-info {
     padding: 20px;
+    transition: 0.3s;
+    background: rgba(0,0,0,0.95);
   }
-  
-  .form-row {
-    flex-direction: column;
-    gap: 15px;
+
+  nav.active {
+    left: 0;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: calc(100% - 24px) !important;
+    margin: 0 12px;
   }
 }
 
-@media (max-width: 480px) {
-  header {
-    min-height: 40vh;
-  }
-  
-  .logo-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  
+@media (max-width: 360px) {
   .logo-svg {
-    margin-right: 0;
-    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
   }
-  
-  nav {
-    flex-direction: column;
+
+  .logo-text {
+    font-size: 1.5em;
+    padding: 8px 15px;
   }
-  
-  nav a {
-    width: 100%;
-    justify-content: center;
-    margin: 2px 0;
+
+  .map-container {
+    max-width: 100vw;
+    margin: 0 -20px;
+    height: 250px;
   }
-  
-  .footer-links {
-    flex-direction: column;
-    gap: 10px;
+}
+
+/* Бургер-меню */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  background: rgba(0,0,0,0.8);
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  display: none;
+}
+
+/* Плавные переходы */
+.service-item,
+nav a,
+.submit-btn {
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .service-item,
+  nav a,
+  .submit-btn {
+    will-change: transform, box-shadow;
   }
 }
