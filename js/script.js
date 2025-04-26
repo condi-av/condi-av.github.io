@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initMap();
     } else {
         const script = document.createElement('script');
-        script.src = 'https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU';
+        script.src = 'https://api-maps.yandex.ru/2.1/?apikey=6a008034-faa2-4fb0-8d62-671062ab8aaf&lang=ru_RU';
         script.onload = function() {
             ymaps.ready(initMap);
         };
