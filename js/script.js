@@ -1,160 +1,74 @@
-// Маска для телефона
+// Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-  const phoneInput = document.getElementById('phone');
-  if (phoneInput) {
+    // Инициализация карты
+    if (typeof ymaps !== 'undefined') {
+        initMap();
+    } else {
+        const script = document.createElement('script');
+        script.src = 'https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU';
+        script.onload = function() {
+            ymaps.ready(initMap);
+        };
+        document.head.appendChild(script);
+    }
+
     // Инициализация маски для телефона
-    const phoneMask = IMask(phoneInput, {
-      mask: '+{7} (000) 000-00-00'
+    const phoneInput = document.getElementById('phone');
+    const phoneMask = new IMask(phoneInput, {
+        mask: '+{7} (000) 000-00-00',
+        lazy: false,
+        placeholderChar: '_'
     });
 
-    // Подсказка для телефона
-    phoneInput.addEventListener('focus', function() {
-      if (!this.value) {
-        phoneMask.value = '+7 (';
-      }
+    // Бургер-меню
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('.nav-links');
+    
+    burger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        this.setAttribute('aria-expanded', this.classList.contains('active'));
     });
 
-    // Валидация телефона при потере фокуса
-    phoneInput.addEventListener('blur', function() {
-      if (this.value.length < 15) { // +7 (XXX) XXX-XX-XX = 15 символов
-        this.setCustomValidity('Пожалуйста, введите полный номер телефона');
-      } else {
-        this.setCustomValidity('');
-      }
-    });
-  }
-
-  // Обработка формы
-  const appointmentForm = document.getElementById('appointmentForm');
-  if (appointmentForm) {
-    appointmentForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const form = e.target;
-      const formData = new FormData(form);
-      const messages = document.getElementById('formMessages');
-      const submitBtn = form.querySelector('button[type="submit"]');
-
-fetch(form.action, {
-  method: 'POST',
-  body: formData
-}).then(response => {
-  if (response.ok) {
-    ym(66049414, 'reachGoal', 'FORM_SUBMIT'); // Отправка цели
-  }
-})
-      
-      // Показываем индикатор загрузки
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
-      
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          messages.className = 'success';
-          messages.innerHTML = `
-            <i class="fas fa-check-circle"></i> 
-            Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.
-          `;
-          form.reset();
-          
-          // Сброс маски телефона после успешной отправки
-          if (phoneMask) {
-            phoneMask.value = '';
-          }
-        } else {
-          throw new Error('Ошибка отправки формы');
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        messages.className = 'error';
-        messages.innerHTML = `
-          <i class="fas fa-exclamation-circle"></i> 
-          Ошибка отправки. Пожалуйста, позвоните нам напрямую или попробуйте позже.
-        `;
-      } finally {
-        // Восстанавливаем кнопку
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Записаться сейчас';
+    // Обработка формы
+    const form = document.getElementById('appointmentForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        // Прокрутка к сообщению
-        messages.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'center' 
-        });
+        // Показываем индикатор загрузки
+        const submitBtn = form.querySelector('.submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
         
-        // Автоматическое скрытие сообщения через 10 секунд
-        setTimeout(() => {
-          messages.style.opacity = '0';
-          setTimeout(() => {
-            messages.style.display = 'none';
-            messages.style.opacity = '1';
-          }, 500);
-        }, 10000);
-      }
+        // Здесь должна быть реальная отправка формы
+        setTimeout(function() {
+            alert('Форма успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+            form.reset();
+            phoneMask.updateValue();
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
+        }, 1500);
     });
-  }
 });
 
-// Анимация для кнопок навигации
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    if (this.getAttribute('href').startsWith('#')) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        window.scrollTo({
-          top: target.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      }
-    }
-  });
-});
-
-// В конец существующего скрипта добавить:
-document.addEventListener('DOMContentLoaded', function() {
-  const burger = document.querySelector('.burger-menu');
-  const nav = document.querySelector('.nav-links');
-
-  // Открытие/закрытие меню
-  burger.addEventListener('click', function() {
-    this.classList.toggle('active');
-    nav.classList.toggle('active');
-  });
-
-  // Закрытие меню при клике на ссылку
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      burger.classList.remove('active');
-      nav.classList.remove('active');
+// Функция инициализации карты
+function initMap() {
+    const map = new ymaps.Map('map', {
+        center: [55.692252, 37.924886],
+        zoom: 16,
+        controls: ['zoomControl', 'fullscreenControl']
     });
-  });
-
-  // Закрытие меню при клике вне области
-  document.addEventListener('click', function(e) {
-    if (!nav.contains(e.target) && !burger.contains(e.target)) {
-      burger.classList.remove('active');
-      nav.classList.remove('active');
-    }
-  });
-});
-// В конец script.js
-document.querySelector('.show-all-reviews').addEventListener('click', function() {
-  this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Загрузка...';
-  
-  // Здесь может быть запрос к API для подгрузки отзывов
-  setTimeout(() => {
-    this.style.display = 'none';
-    document.querySelectorAll('.review-card.hidden').forEach(card => {
-      card.style.display = 'block';
+    
+    const placemark = new ymaps.Placemark([55.692252, 37.924886], {
+        hintContent: 'AC Service',
+        balloonContent: 'Сервис автокондиционеров'
+    }, {
+        iconLayout: 'default#image',
+        iconImageHref: 'https://cdn-icons-png.flaticon.com/512/484/484167.png',
+        iconImageSize: [48, 48],
+        iconImageOffset: [-24, -48]
     });
-  }, 1000);
-});
+    
+    map.geoObjects.add(placemark);
+    map.behaviors.disable('scrollZoom');
+}
