@@ -14,6 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
+    ymaps.ready(function() {
+           var map = new ymaps.Map("map", {
+               center: [55.692252, 37.924886],
+               zoom: 15
+           });
+           // Добавление метки
+           var placemark = new ymaps.Placemark([55.692252, 37.924886], {
+               hintContent: 'AC Service',
+               balloonContent: 'г. Москва, ул. Люберка, 1/1А'
+           });
+           map.geoObjects.add(placemark);
+       });
+    
     // Валидация телефона при потере фокуса
     phoneInput.addEventListener('blur', function() {
       if (this.value.length < 15) { // +7 (XXX) XXX-XX-XX = 15 символов
