@@ -12,9 +12,14 @@ header {
   background-image: url('../images/header-image.webp');
   background-size: cover;
   background-position: center;
-  padding: 30px 15px;
+  padding: 40px 20px;
   text-align: center;
-  min-height: 50vh;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
   position: relative;
 }
 
@@ -33,30 +38,31 @@ header::before {
   z-index: 1;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  margin-bottom: 15px;
 }
 
 .logo-svg {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
 }
 
 .logo-text {
-  font-size: 1.8em;
+  font-size: 2em;
   font-weight: 700;
   color: #fff;
-  padding: 8px 16px;
-  border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 
 /* Навигация */
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 8px;
+  padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -65,76 +71,138 @@ nav {
 nav a {
   color: #fff;
   text-decoration: none;
-  padding: 10px 12px;
-  margin: 0 5px;
-  font-size: 0.9em;
-  border-radius: 6px;
+  padding: 12px 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
   transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+nav a i {
+  margin-right: 8px;
+  font-size: 1.2em;
 }
 
 nav a:hover {
   background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
-/* Секции */
+/* Основные секции */
 section {
-  padding: 30px 15px;
+  padding: 50px 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 h2 {
-  font-size: 1.8em;
-  margin-bottom: 25px;
   text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+#about p {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 1.8;
 }
 
 /* Услуги */
 .services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
 
 .service-item {
   background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  padding: 30px;
+  flex: 1 1 300px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.service-item h3 {
+  margin-top: 0;
+  color: #007bff;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.service-item h3 i {
+  margin-right: 10px;
+  color: #0056b3;
 }
 
 /* Форма */
 .contact-form {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px 15px;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
 .form-container {
-  flex: 1 1 400px;
+  flex: 1;
   background: #fff;
-  padding: 25px;
-  border-radius: 12px;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.form-subtitle {
+  color: #e74c3c;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
   width: 100%;
-  padding: 10px 12px;
+  padding: 12px 15px;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+  outline: none;
 }
 
 .form-row {
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
 
 .half-width {
@@ -143,84 +211,230 @@ h2 {
 
 .submit-btn {
   width: 100%;
-  padding: 12px;
-  background: #007bff;
+  padding: 15px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  margin-top: 15px;
-}
-
-/* Контакты */
-.contact-info {
-  flex: 1 1 300px;
-  background: #f8f9fa;
-  padding: 25px;
-  border-radius: 12px;
-}
-
-.map-container {
-  height: 250px;
-  margin-top: 20px;
   border-radius: 8px;
-  overflow: hidden;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #2980b9, #3498db);
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.form-footer {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.privacy-checkbox {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.privacy-checkbox input {
+  margin-right: 8px;
+}
+
+.callback-info {
+  color: #27ae60;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Контактная информация */
+.contact-info {
+  flex: 0 0 300px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.contact-info h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-item i {
+  color: #3498db;
+  width: 20px;
+  text-align: center;
+}
+
+.contact-item a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #007bff;
+}
+
+/* Сообщения формы */
+#formMessages {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+}
+
+#formMessages.success {
+  background: #d4edda;
+  color: #155724;
+  display: block;
+}
+
+#formMessages.error {
+  background: #f8d7da;
+  color: #721c24;
+  display: block;
+}
+
+/* Футер */
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+.footer-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 1.5em;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #007bff;
+  transform: translateY(-3px);
 }
 
 /* Адаптация */
 @media (max-width: 768px) {
   header {
-    min-height: 40vh;
-    padding: 25px 10px;
+    min-height: 50vh;
+    background-image: url('../images/header-image-mobile.webp');
+    padding: 30px 15px;
   }
-
+  
   .logo-text {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
-
+  
   nav {
+    flex-direction: row;
     flex-wrap: wrap;
+    padding: 8px 10px;
   }
-
+  
   nav a {
-    flex: 1 1 100px;
-    text-align: center;
-    margin: 3px;
-    padding: 8px;
+    padding: 8px 10px;
+    font-size: 0.9em;
   }
-}
-
-@media (max-width: 480px) {
-  .form-row {
+  
+  section {
+    padding: 30px 15px;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .service-item {
+    padding: 20px;
+  }
+  
+  .contact-form {
     flex-direction: column;
-    gap: 10px;
+    padding: 15px;
+    gap: 20px;
   }
-
+  
   .form-container,
   .contact-info {
     padding: 20px;
   }
-
-  .service-item {
-    padding: 15px;
-  }
-
-  .submit-btn {
-    font-size: 14px;
-  }
-
-  .map-container {
-    height: 200px;
+  
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
   }
 }
 
-@media (max-width: 360px) {
-  nav a {
-    font-size: 0.8em;
-    padding: 6px;
+@media (max-width: 480px) {
+  header {
+    min-height: 40vh;
   }
-
-  .logo-text {
-    font-size: 1.3em;
+  
+  .logo-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo-svg {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  nav {
+    flex-direction: column;
+  }
+  
+  nav a {
+    width: 100%;
+    justify-content: center;
+    margin: 2px 0;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
   }
 }
