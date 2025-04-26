@@ -34,6 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
       const formData = new FormData(form);
       const messages = document.getElementById('formMessages');
       const submitBtn = form.querySelector('button[type="submit"]');
+
+fetch(form.action, {
+  method: 'POST',
+  body: formData
+}).then(response => {
+  if (response.ok) {
+    ym(66049414, 'reachGoal', 'FORM_SUBMIT'); // Отправка цели
+  }
+})
       
       // Показываем индикатор загрузки
       submitBtn.disabled = true;
