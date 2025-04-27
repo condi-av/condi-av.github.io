@@ -168,6 +168,29 @@ function showMessage(container, type, text) {
     }, 5000);
 }
 
+// Плавающая кнопка телефона с анимацией
+document.addEventListener('DOMContentLoaded', function() {
+  const callBtn = document.querySelector('.floating-call-btn');
+  
+  // Анимация пульсации при загрузке
+  callBtn.classList.add('pulse');
+  
+  // Останавливаем пульсацию при наведении
+  callBtn.addEventListener('mouseenter', function() {
+    this.classList.remove('pulse');
+  });
+  
+  // Возвращаем пульсацию, когда курсор убран
+  callBtn.addEventListener('mouseleave', function() {
+    this.classList.add('pulse');
+  });
+  
+  // Останавливаем пульсацию после клика
+  callBtn.addEventListener('click', function() {
+    this.classList.remove('pulse');
+  });
+});
+
 // Плавная прокрутка (без изменений)
 function initSmoothScroll() {
     document.querySelectorAll('nav a').forEach(link => {
