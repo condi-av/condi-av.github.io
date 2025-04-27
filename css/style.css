@@ -86,7 +86,7 @@ body {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: #3498db; /* Синий цвет иконки */
     font-size: 1.5rem;
     cursor: pointer;
     padding: 10px;
@@ -100,9 +100,13 @@ body {
     display: block;
     width: 25px;
     height: 3px;
-    background: white;
+    background: #3498db; /* Синие полоски */
     margin: 5px 0;
     transition: all 0.3s;
+}
+
+.burger-menu.active .burger-bar {
+    background: #2980b9; /* Темнее при активации */
 }
 
 /* Секции */
