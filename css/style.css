@@ -601,14 +601,14 @@ body {
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
   .floating-call-btn {
-    right: 35px; /* Сдвиг влево */
+    right: 45px; /* Сдвиг влево */
     bottom: 100px;
     width: 50px;
     height: 50px;
   }
 
   .floating-whatsapp-btn {
-    right: 35px; /* Сдвиг влево */
+    right: 45px; /* Сдвиг влево */
     bottom: 170px;
     width: 45px;
     height: 45px;
@@ -618,12 +618,12 @@ body {
 /* Для очень маленьких экранов */
 @media (max-width: 480px) {
   .floating-call-btn {
-    right: 20px; /* Больше сдвиг влево */
+    right: 30px; /* Больше сдвиг влево */
     bottom: 90px;
   }
 
   .floating-whatsapp-btn {
-    right: 20px; /* Больше сдвиг влево */
+    right: 30px; /* Больше сдвиг влево */
     bottom: 150px;
   }
 }
