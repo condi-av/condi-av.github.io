@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Основные страницы -->
     <url>
         <loc>https://condi-av.github.io/</loc>
         <lastmod>2025-03-25</lastmod>
@@ -14,6 +15,15 @@
         <priority>0.8</priority>
     </url>
     
+    <!-- Страница политики конфиденциальности (обновленная дата) -->
+    <url>
+        <loc>https://condi-av.github.io/privacy</loc>
+        <lastmod>2025-03-26</lastmod> <!-- Актуальная дата -->
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- Статьи блога -->
     <url>
         <loc>https://condi-av.github.io/blog/ac-service-frequency</loc>
         <lastmod>2025-03-20</lastmod>
@@ -33,13 +43,6 @@
         <lastmod>2025-03-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-    </url>
-    
-    <url>
-        <loc>https://condi-av.github.io/privacy</loc>
-        <lastmod>2025-03-25</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
     </url>
     
     <!-- Анкорные разделы -->
