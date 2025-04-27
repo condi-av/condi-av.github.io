@@ -627,6 +627,10 @@ body {
     bottom: 150px;
   }
 }
+
+.floating-call-btn:active {
+  transform: scale(0.9);
+}
   
   /* Показываем текст на больших экранах */
   @media (min-width: 992px) {
