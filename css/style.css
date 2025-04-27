@@ -529,3 +529,100 @@ body {
         padding: 20px;
     }
 }
+
+/* Плавающая кнопка телефона */
+.floating-call-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(to right, #27ae60, #2ecc71);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.floating-call-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  background: linear-gradient(to right, #2ecc71, #27ae60);
+}
+
+.floating-call-btn .call-text {
+  display: none;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+/* Плавающая кнопка WhatsApp */
+.floating-whatsapp-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: linear-gradient(to right, #25D366, #128C7E);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.floating-whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+/* Анимация пульсации */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.floating-call-btn.pulse {
+  animation: pulse 1.5s infinite;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .floating-call-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  
+  .floating-whatsapp-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 80px;
+  }
+  
+  /* Показываем текст на больших экранах */
+  @media (min-width: 992px) {
+    .floating-call-btn {
+      width: auto;
+      padding: 0 20px;
+      border-radius: 30px;
+    }
+    
+    .floating-call-btn .call-text {
+      display: inline;
+    }
+  }
+}
