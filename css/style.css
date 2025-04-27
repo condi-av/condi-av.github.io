@@ -601,39 +601,30 @@ body {
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
   .floating-call-btn {
-    bottom: 100px; /* Было 20px */
-    right: 15px;   /* Было 20px */
-    width: 55px;
-    height: 55px;
+    right: 15px; /* Сдвиг влево */
+    bottom: 100px;
+    width: 50px;
+    height: 50px;
   }
 
   .floating-whatsapp-btn {
-    bottom: 160px; /* Было 80px */
-    right: 15px;   /* Было 20px */
-    width: 55px;
-    height: 55px;
-  }
-
-  /* Убираем текст на мобильных */
-  .floating-call-btn .call-text {
-    display: none !important;
+    right: 15px; /* Сдвиг влево */
+    bottom: 170px;
+    width: 45px;
+    height: 45px;
   }
 }
 
 /* Для очень маленьких экранов */
 @media (max-width: 480px) {
   .floating-call-btn {
+    right: 10px; /* Больше сдвиг влево */
     bottom: 90px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
   }
 
   .floating-whatsapp-btn {
+    right: 10px; /* Больше сдвиг влево */
     bottom: 150px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
   }
 }
   
