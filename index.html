@@ -318,32 +318,39 @@
         <h2 class="section-title">Записаться на обслуживание</h2>
         <div class="contact-container">
             <div class="contact-form">
-                <form id="appointmentForm" class="appointment-form">
-                    <div class="form-group">
-                        <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone"><i class="fas fa-phone"></i> Телефон:</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+7 (___) ___-__-__" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="car"><i class="fas fa-car"></i> Марка авто:</label>
-                        <input type="text" id="car" name="car" class="form-input" placeholder="Например: Toyota Camry">
-                    </div>
-                    <div class="form-group">
-                        <label for="service"><i class="fas fa-tools"></i> Услуга:</label>
-                        <select id="service" name="service" class="form-input" required>
-                            <option value="">-- Выберите услугу --</option>
-                            <option value="Диагностика">Диагностика (бесплатно)</option>
-                            <option value="Заправка">Заправка кондиционера</option>
-                            <option value="Ремонт">Ремонт системы</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> Отправить заявку
-                    </button>
-                </form>
+<form id="appointmentForm" action="https://formspree.io/f/mqaqaezj" method="POST">
+  <input type="hidden" name="_language" value="ru"> <!-- Русский язык уведомлений -->
+  <input type="hidden" name="_subject" value="Новая заявка с сайта AC Service">
+  
+  <div class="form-group">
+    <label for="name"><i class="fas fa-user"></i> Ваше имя:</label>
+    <input type="text" id="name" name="Имя клиента" class="form-input" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="phone"><i class="fas fa-phone"></i> Телефон:</label>
+    <input type="tel" id="phone" name="Телефон" class="form-input" placeholder="+7 (___) ___-__-__" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="car"><i class="fas fa-car"></i> Марка авто:</label>
+    <input type="text" id="car" name="Марка автомобиля" class="form-input" placeholder="Например: Toyota Camry">
+  </div>
+  
+  <div class="form-group">
+    <label for="service"><i class="fas fa-tools"></i> Услуга:</label>
+    <select id="service" name="Выбранная услуга" class="form-input" required>
+      <option value="">-- Выберите услугу --</option>
+      <option value="Диагностика">Диагностика (бесплатно)</option>
+      <option value="Заправка">Заправка кондиционера</option>
+      <option value="Ремонт">Ремонт системы</option>
+    </select>
+  </div>
+  
+  <button type="submit" class="submit-btn">
+    <i class="fas fa-paper-plane"></i> Отправить заявку
+  </button>
+</form>
             </div>
             <div class="contact-info">
                 <h3 class="contact-info-title"><i class="fas fa-map-marker-alt"></i> Наш адрес</h3>
