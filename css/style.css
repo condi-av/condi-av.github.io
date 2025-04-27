@@ -316,13 +316,14 @@ body {
 /* Контакты */
 .contact-container {
     display: flex;
-    gap: 30px;
+    gap: 50px;
     margin-top: 40px;
 }
 
 .contact-form {
     flex: 1;
     min-width: 300px;
+    margin-bottom: 30px;
 }
 
 .contact-info {
@@ -332,6 +333,7 @@ body {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
 }
 
 .map-container {
