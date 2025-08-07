@@ -23,12 +23,12 @@ function initYandexMap() {
 
 function createMap() {
     const map = new ymaps.Map('map', {
-        center: [55.692252, 37.924886],
+        center: [55.726548, 37.867609],
         zoom: 16,
         controls: ['zoomControl', 'fullscreenControl']
     });
     
-    const placemark = new ymaps.Placemark([55.692252, 37.924886], {
+    const placemark = new ymaps.Placemark([55.726548, 37.867609], {
         hintContent: 'AC Service',
         balloonContent: 'Сервис автокондиционеров'
     }, {
