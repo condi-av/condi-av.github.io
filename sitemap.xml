@@ -25,6 +25,13 @@
     
     <!-- Статьи блога -->
     <url>
+        <loc>https://condi-av.github.io/blog/r744-to-r134a-conversion</loc>
+        <lastmod>2025-03-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
         <loc>https://condi-av.github.io/blog/ac-service-frequency</loc>
         <lastmod>2025-03-20</lastmod>
         <changefreq>monthly</changefreq>
@@ -74,3 +81,4 @@
         <priority>0.8</priority>
     </url>
 </urlset>
+
