@@ -3,7 +3,7 @@
     <!-- Основные страницы -->
     <url>
         <loc>https://condi-av.github.io/</loc>
-        <lastmod>2025-03-25</lastmod>
+        <lastmod>2025-08-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -81,4 +81,5 @@
         <priority>0.8</priority>
     </url>
 </urlset>
+
 
