@@ -116,10 +116,15 @@ function initBurgerMenu() {
     });
 }
 
-// Инициализация формы с Formspree
+// Инициализация формы с Telegram Bot
 function initForm() {
     const form = document.getElementById('appointmentForm');
     if (!form) return;
+
+    // Токен бота и ID чата
+    const botToken = 'bot7973323851:AAHq5QHx6j8yEkqCOerWCxAFgT0hRGLL6zY';
+    const chatId = '5414933430';
+    const telegramApiUrl = `https://api.telegram.org/${botToken}/sendMessage`;
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -149,36 +154,56 @@ function initForm() {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
 
         try {
+            // Формируем данные для отправки
             const formData = new FormData(form);
+            const name = formData.get('Имя клиента');
+            const phone = formData.get('Телефон');
+            const car = formData.get('Марка автомобиля') || 'Не указана';
+            const service = formData.get('Выбранная услуга');
             
-            // Добавляем дополнительную информацию о посетителе
-            formData.append('Страница', window.location.href);
-            formData.append('User Agent', navigator.userAgent);
-            formData.append('Время отправки', new Date().toLocaleString('ru-RU'));
+            // Форматируем сообщение для Telegram
+            const message = `
+🔥 *НОВАЯ ЗАЯВКА С САЙТА* 🔥
 
-            const response = await fetch('https://formspree.io/f/mqaqaezj', {
+*Имя:* ${name}
+*Телефон:* ${phone}
+*Марка авто:* ${car}
+*Услуга:* ${service}
+
+*Время:* ${new Date().toLocaleString('ru-RU')}
+*Страница:* ${window.location.href}
+            `.trim();
+
+            // Отправляем запрос к Telegram API
+            const response = await fetch(telegramApiUrl, {
                 method: 'POST',
-                body: formData,
                 headers: {
-                    'Accept': 'application/json'
-                }
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown',
+                    disable_notification: false
+                })
             });
 
-            if (response.ok) {
+            const result = await response.json();
+
+            if (response.ok && result.ok) {
                 showMessage(messages, 'success', '✅ Заявка отправлена! Мы свяжемся с вами в течение 15 минут.');
                 form.reset();
                 
-                // Яндекс.Метрика - цель для новой услуги
+                // Яндекс.Метрика - цель
                 if (typeof ym !== 'undefined') {
-                    const selectedService = serviceSelect ? serviceSelect.value : '';
-                    if (selectedService.includes('R744')) {
+                    if (service.includes('R744')) {
                         ym(66049414, 'reachGoal', 'R744_CONVERSION_FORM');
                     } else {
                         ym(66049414, 'reachGoal', 'FORM_SENT');
                     }
                 }
 
-                // Google Analytics (если используется)
+                // Google Analytics
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'form_submit', {
                         'event_category': 'contact',
@@ -187,7 +212,7 @@ function initForm() {
                 }
 
             } else {
-                throw new Error(`Ошибка сервера: ${response.status}`);
+                throw new Error(`Ошибка Telegram API: ${result.description || 'Unknown error'}`);
             }
         } catch (error) {
             console.error('Ошибка при отправке формы:', error);
