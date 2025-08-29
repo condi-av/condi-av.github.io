@@ -171,6 +171,8 @@ function initForm() {
 *✅Услуга:* ${service}
 
 *Время:* ${new Date().toLocaleString('ru-RU')}
+*Страница:* ${window.location.href}
+            `.trim();
 
             // Отправляем запрос к Telegram API
             const response = await fetch(telegramApiUrl, {
