@@ -116,6 +116,32 @@
     background-color: #f8f9fa;
 }
 
+/* Информационные блоки */
+.info-box {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.info-box h3 {
+    color: #2e7d32;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-box .btn {
+    margin-top: 15px;
+    background-color: #4caf50;
+}
+
+.info-box .btn:hover {
+    background-color: #45a049;
+}
+
 /* Предупреждающие блоки */
 .warning-box {
     background-color: #fff8e1;
@@ -136,7 +162,7 @@
 /* Призыв к действию */
 .call-to-action {
     background-color: #e3f2fd;
-    padding: 20px;
+    padding: 25px;
     border-radius: 8px;
     margin: 40px 0;
     text-align: center;
@@ -147,19 +173,52 @@
     font-size: 1.1rem;
 }
 
-.call-to-action .btn {
+/* Контейнер для кнопок */
+.mobile-buttons-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Стили для кнопок */
+.btn {
     display: inline-block;
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    min-width: 200px;
+}
+
+.call-to-action .btn {
     background-color: #2980b9;
     color: white;
-    padding: 12px 25px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
 }
 
 .call-to-action .btn:hover {
     background-color: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Стили для кнопки WhatsApp */
+.whatsapp-btn {
+    background-color: #25D366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
 }
 
 /* Подвал поста */
@@ -171,16 +230,16 @@
 
 .post-tags {
     margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .post-tags span {
-    display: inline-block;
     background-color: #f1f1f1;
     color: #7f8c8d;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 15px;
-    margin-right: 8px;
-    margin-bottom: 8px;
     font-size: 0.9rem;
 }
 
@@ -188,6 +247,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .post-share span {
@@ -199,6 +259,7 @@
     color: #2980b9;
     font-size: 1.3rem;
     transition: color 0.3s;
+    margin: 0 5px;
 }
 
 .social-share:hover {
@@ -251,44 +312,6 @@
     color: #2980b9;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .blog-post-container {
-        padding: 15px;
-    }
-    
-    .post-header h1 {
-        font-size: 1.8rem;
-    }
-    
-    .post-content-full {
-        font-size: 1rem;
-    }
-    
-    .post-content-full h2 {
-        font-size: 1.4rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .post-meta {
-        flex-direction: column;
-        gap: 5px;
-        align-items: center;
-    }
-    
-    .brands-table, 
-    .comparison-table {
-        font-size: 0.9rem;
-    }
-    
-    .brands-table th, 
-    .brands-table td,
-    .comparison-table th, 
-    .comparison-table td {
-        padding: 8px 10px;
-    }
-}
 /* Стили для комментариев */
 .comments-section {
     margin-top: 50px;
@@ -401,8 +424,80 @@
     color: #f1c40f;
 }
 
-/* Адаптивность для комментариев */
+/* Адаптивность */
 @media (max-width: 768px) {
+    .blog-post-container {
+        padding: 15px;
+    }
+    
+    .post-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .post-content-full {
+        font-size: 1rem;
+    }
+    
+    .post-content-full h2 {
+        font-size: 1.4rem;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
+    
+    .brands-table, 
+    .comparison-table {
+        font-size: 0.9rem;
+    }
+    
+    .brands-table th, 
+    .brands-table td,
+    .comparison-table th, 
+    .comparison-table td {
+        padding: 8px 10px;
+    }
+    
+    /* Адаптация для мобильных кнопок */
+    .mobile-buttons-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .call-to-action .btn {
+        margin: 5px 0;
+    }
+    
+    .info-box, 
+    .warning-box, 
+    .call-to-action {
+        padding: 15px;
+        margin: 20px 0;
+    }
+    
+    /* Адаптация подвала */
+    .post-tags {
+        justify-content: center;
+    }
+    
+    .post-share {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .social-share {
+        margin: 5px;
+    }
+    
+    /* Адаптация комментариев */
     .comment-header {
         flex-direction: column;
         align-items: flex-start;
@@ -420,36 +515,25 @@
     }
 }
 
-/* Стили для таблицы сравнения */
-.comparison-table {
-    margin: 30px 0;
-    overflow-x: auto;
-}
-
-.comparison-table table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.comparison-table th {
-    background: #2980b9;
-    color: white;
-    padding: 15px;
-    text-align: left;
-    font-weight: 600;
-}
-
-.comparison-table td {
-    padding: 12px 15px;
-    border: 1px solid #ecf0f1;
-}
-
-.comparison-table tr:nth-child(even) {
-    background: #f8f9fa;
-}
-
-.comparison-table tr:hover {
-    background: #e3f2fd;
+@media (max-width: 480px) {
+    .post-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .post-content-full h2 {
+        font-size: 1.3rem;
+    }
+    
+    .post-content-full h3 {
+        font-size: 1.1rem;
+    }
+    
+    .related-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-tags span {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
 }
