@@ -447,6 +447,44 @@ function initLazyLoading() {
     }
 }
 
+// Анимация печатающегося текста
+function initTypingAnimation() {
+    const typedTextElement = document.getElementById('typed-text');
+    const cursorElement = document.querySelector('.cursor');
+    
+    if (!typedTextElement || !cursorElement) return;
+    
+    // Ждем завершения анимации появления блока
+    setTimeout(() => {
+        const text = "Профессиональная заправка и ремонт автокондиционеров в Москве";
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentText = text.substring(0, charIndex);
+            typedTextElement.textContent = currentText;
+            
+            if (!isDeleting) {
+                // Печать текста
+                charIndex++;
+                if (charIndex <= text.length) {
+                    setTimeout(type, 100); // Скорость печати
+                } else {
+                    // Текст напечатан, курсор продолжает мигать
+                    isDeleting = true;
+                    setTimeout(() => {
+                        cursorElement.classList.add('typing');
+                    }, 500);
+                }
+            }
+        }
+        
+        // Запуск анимации печати
+        type();
+        
+    }, 1500); // Задержка перед началом печати (1.5s после появления блока)
+}
+
 // Оптимизация производительности
 function initPerformanceOptimization() {
     // Отложенная загрузка не критичных ресурсов
@@ -476,6 +514,7 @@ function initPerformanceOptimization() {
 // Инициализация всего после полной загрузки
 window.addEventListener('load', function() {
     initPerformanceOptimization();
+    initTypingAnimation(); // ← Добавлен вызов анимации текста
     
     // Добавляем класс для анимаций после загрузки
     document.body.classList.add('loaded');
