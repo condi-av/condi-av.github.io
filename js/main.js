@@ -447,7 +447,6 @@ function initLazyLoading() {
     }
 }
 
-// Анимация печатающегося текста
 function initTypingAnimation() {
     const typedTextElement = document.getElementById('typed-text');
     const cursorElement = document.querySelector('.cursor');
@@ -458,24 +457,24 @@ function initTypingAnimation() {
     setTimeout(() => {
         const text = "Профессиональная заправка и ремонт автокондиционеров в Москве";
         let charIndex = 0;
-        let isDeleting = false;
         
         function type() {
             const currentText = text.substring(0, charIndex);
             typedTextElement.textContent = currentText;
             
-            if (!isDeleting) {
-                // Печать текста
-                charIndex++;
-                if (charIndex <= text.length) {
-                    setTimeout(type, 100); // Скорость печати
-                } else {
-                    // Текст напечатан, курсор продолжает мигать
-                    isDeleting = true;
-                    setTimeout(() => {
-                        cursorElement.classList.add('typing');
-                    }, 500);
-                }
+            // Печать текста
+            charIndex++;
+            if (charIndex <= text.length) {
+                setTimeout(type, 100); // Скорость печати
+            } else {
+                // Текст напечатан, плавно скрываем курсор
+                cursorElement.style.transition = 'opacity 0.5s ease';
+                cursorElement.style.opacity = '0';
+                
+                // Полностью убираем курсор после анимации
+                setTimeout(() => {
+                    cursorElement.style.display = 'none';
+                }, 500);
             }
         }
         
