@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://condi-av.github.io/sitemap.xml
+
+# Яндекс
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign /
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Скорость сканирования
+Crawl-delay: 1
