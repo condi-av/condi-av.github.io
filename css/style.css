@@ -25,6 +25,9 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 0.5s;
 }
 
 .logo-svg {
@@ -37,12 +40,54 @@ body {
     font-size: 3rem;
     font-weight: 700;
     color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.8s;
 }
 
 .header-subtitle {
     max-width: 800px;
     margin: 0 auto;
     font-size: 1.4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 1.2s;
+    min-height: 1.4rem;
+    display: inline-block;
+}
+
+/* Анимация появления элементов */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для эффекта печатающегося текста */
+.typed-text {
+    color: #fff;
+    font-weight: 500;
+}
+
+.cursor {
+    display: inline-block;
+    background-color: #3498db;
+    margin-left: 2px;
+    width: 3px;
+    animation: blink 1s infinite;
+}
+
+.cursor.typing {
+    animation: none;
+}
+
+@keyframes blink {
+    0% { background-color: #3498db; }
+    49% { background-color: #3498db; }
+    50% { background-color: transparent; }
+    99% { background-color: transparent; }
+    100% { background-color: #3498db; }
 }
 
 /* Для планшетов */
@@ -59,6 +104,7 @@ body {
     
     .header-subtitle {
         font-size: 1.1rem;
+        min-height: 1.1rem;
     }
 }
 
@@ -73,6 +119,7 @@ body {
     .logo-container {
         flex-direction: column;
         text-align: center;
+        animation-delay: 0.3s;
     }
     
     .logo-svg {
@@ -82,11 +129,19 @@ body {
     
     .logo-text {
         font-size: 2rem;
+        animation-delay: 0.5s;
     }
     
     .header-subtitle {
         font-size: 1rem;
+        min-height: 1rem;
         max-width: 100%;
+        text-align: center;
+        animation-delay: 0.8s;
+    }
+    
+    .typed-text, .cursor {
+        font-size: 0.95rem;
     }
 }
 
@@ -103,6 +158,11 @@ body {
     
     .header-subtitle {
         font-size: 0.9rem;
+        min-height: 0.9rem;
+    }
+    
+    .typed-text, .cursor {
+        font-size: 0.85rem;
     }
 }
 
