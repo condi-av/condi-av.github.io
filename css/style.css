@@ -13,7 +13,7 @@ body {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/header-bg-desktop.webp') center/cover no-repeat;
     padding: 80px 20px;
     text-align: center;
-    min-height: 80vh;
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +42,7 @@ body {
 .header-subtitle {
     max-width: 800px;
     margin: 0 auto;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 /* Для планшетов */
