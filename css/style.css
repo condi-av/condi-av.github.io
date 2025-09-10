@@ -13,7 +13,7 @@ body {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/header-bg-desktop.webp') center/cover no-repeat;
     padding: 80px 20px;
     text-align: center;
-    min-height: 75vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
