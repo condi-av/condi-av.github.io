@@ -11,9 +11,9 @@ body {
 /* Шапка */
 .main-header {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/header-bg-desktop.webp') center/cover no-repeat;
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
-    min-height: 60vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,17 +24,17 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .logo-svg {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-right: 20px;
 }
 
 .logo-text {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: white;
 }
@@ -49,7 +49,7 @@ body {
 @media (max-width: 1024px) {
     .main-header {
         background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/header-bg-tablet.webp') center/cover no-repeat;
-        min-height: 55vh;
+        min-height: 65vh;
         padding: 50px 20px;
     }
     
